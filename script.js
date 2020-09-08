@@ -54,7 +54,7 @@ const onPress = (id) => {
     checked = myBoard.updateBoard(index, playersTurn[1]);
     myBoard.display_board();
   } else {
-    console.log("Already filled");
+    alert("Already filled");
   }
 };
 
