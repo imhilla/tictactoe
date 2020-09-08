@@ -15,33 +15,20 @@
   <body>
     <div class="container d-flex flex-column align-items-center mt-3">
       <h1 class="mb-3 display-5 font-weight-bold">Welcome to TicTacToe!</h1>
-<!--      <form action="">-->
-<!--        <div class="d-grid">-->
-<!--          <label for="firstplayer" class="font-weight-bold"-->
-<!--            >First player name:</label-->
-<!--          >-->
-<!--          <input type="text" id="firstplayer" name="firstplayer" value="" />-->
-
-<!--          <label for="secondplayer" class="font-weight-bold"-->
-<!--            >Second player name:</label-->
-<!--          >-->
-<!--          <input type="text" id="secondplayer" name="secondplayer" value="" />-->
-<!--        </div>-->
-<!--        <br />-->
-<!--        <div class="d-flex justify-content-center">-->
-<!--          <input type="submit" value="Play" class="mx-auto btn btn-primary" />-->
-<!--        </div>-->
-<!--      </form>-->
-      <div class="board mt-5">
-        <div onclick="onPress(this.id)" id="inner-board-0" class="inner-board1"></div>
-        <div onclick="onPress(this.id)" id="inner-board-1" class="inner-board2"></div>
-        <div onclick="onPress(this.id)" id="inner-board-2" class="inner-board3"></div>
-        <div onclick="onPress(this.id)" id="inner-board-3" class="inner-board4"></div>
-        <div onclick="onPress(this.id)" id="inner-board-4" class="inner-board5"></div>
-        <div onclick="onPress(this.id)" id="inner-board-5" class="inner-board6"></div>
-        <div onclick="onPress(this.id)" id="inner-board-6" class="inner-board7"></div>
-        <div onclick="onPress(this.id)" id="inner-board-7" class="inner-board8"></div>
-        <div onclick="onPress(this.id)" id="inner-board-8" class="inner-board9"></div>
+      <div id="winstatus" class="winstatus">
+      </div>
+      <button id="reloadbutton" onclick="reload()" class="reloadbutton"> Play Again</button>
+      <button id="playgame" class="btn btn-primary"> Start Game</button>
+      <div id="outer-board" class="board mt-5">
+        <div onclick="onPress(this.id)" id="inner-board-0" class="inner-board"></div>
+        <div onclick="onPress(this.id)" id="inner-board-1" class="inner-board"></div>
+        <div onclick="onPress(this.id)" id="inner-board-2" class="inner-board"></div>
+        <div onclick="onPress(this.id)" id="inner-board-3" class="inner-board"></div>
+        <div onclick="onPress(this.id)" id="inner-board-4" class="inner-board"></div>
+        <div onclick="onPress(this.id)" id="inner-board-5" class="inner-board"></div>
+        <div onclick="onPress(this.id)" id="inner-board-6" class="inner-board"></div>
+        <div onclick="onPress(this.id)" id="inner-board-7" class="inner-board"></div>
+        <div onclick="onPress(this.id)" id="inner-board-8" class="inner-board"></div>
       </div>
     </div>
 
