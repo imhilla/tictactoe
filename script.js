@@ -45,17 +45,17 @@ const board = (() => {
 })();
 
 let myBoard = board;
+console.log(myBoard);
 let checked = true;
 const onPress = (id) => {
   let index = parseInt(id[id.length - 1]);
-  if (checked == true) {
-    console.log("yes");
+  if (myBoard.board_array[index] === "") {
+    let playersTurn = newGame.turn();
+    checked = myBoard.updateBoard(index, playersTurn[1]);
+    myBoard.display_board();
   } else {
-    console.log("no");
+    console.log("Already filled");
   }
-  let playersTurn = newGame.turn();
-  checked = myBoard.updateBoard(index, playersTurn[1]);
-  myBoard.display_board();
 };
 
 // let game = true;
