@@ -1,10 +1,12 @@
 // document.querySelector("#inner-board-1").addEventListener("click",()=> {
 //   document.getElementById("para").style.display = "block"
 // })
+let newGame;
 
 document.getElementById("playgame").addEventListener("click", () => {
   document.getElementById("outer-board").style.display = "grid";
   document.getElementById("playgame").style.display = "none";
+  newGame = players();
 });
 
 function reload() {
@@ -45,8 +47,6 @@ const players = () => {
     turn,
   };
 };
-
-let newGame = players();
 
 const board = (() => {
   let board_array = ["", "", "", "", "", "", "", "", ""];
@@ -98,7 +98,7 @@ const board = (() => {
       for (i = 0; i < board_array.length; i++) {
         if (board_array[i].length > 0) {
           count += 1;
-          if ( count == 9) {
+          if (count == 9) {
             return true;
           }
         }
