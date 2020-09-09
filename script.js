@@ -1,6 +1,6 @@
 let newGame;
 
-const players = () => {
+const playersFactory = () => {
   let player = { firstPlayerName: "", secondPlayerName: "" };
 
   player.firstPlayerName = document.getElementById("name1").value;
@@ -9,6 +9,7 @@ const players = () => {
   document.getElementById(
     "playersturn"
   ).textContent = `${player.firstPlayerName}'s turn`;
+
   let symbol = { firstPlayerSymbol: "X", secondPlayerSymbol: "O" };
   let playerTurn = 0;
 
@@ -32,7 +33,7 @@ const players = () => {
 document.getElementById("playgame").addEventListener("click", () => {
   document.getElementById("outer-board").style.display = "grid";
   document.getElementById("playgame").style.display = "none";
-  newGame = players();
+  newGame = playersFactory();
 });
 
 const board = (() => {
@@ -112,8 +113,6 @@ const onPress = (id) => {
     myBoard.displayBoard();
     myBoard.drawStatus();
     myBoard.winStatus(playersTurn);
-  } else {
-    alert("Already filled"); // eslint-disable-line no-alert
   }
 };
 
