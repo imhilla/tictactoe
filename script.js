@@ -56,7 +56,7 @@ const board = (() => {
     [3, 5, 7],
     [1, 5, 9],
   ];
-  const display_board = () => {
+  const displayBoard = () => {
     boardArray.forEach((items, index) => {
       document.getElementById(`inner-board-${index}`).textContent = `${items}`;
     });
@@ -88,19 +88,7 @@ const board = (() => {
   };
 
   const drawStatus = () => {
-    let count = 0;
-    function checkString(boardArray) {
-      for (let i = 0; i < boardArray.length; i += 1) {
-        if (boardArray[i].length > 0) {
-          count += 1;
-          if (count === 9) {
-            return true;
-          }
-        }
-      }
-    }
-
-    if (checkString(boardArray) === true) {
+    if (!boardArray.includes('')) {
       setTimeout(() => {
         document.querySelector('#outer-board').style.display = 'none';
         document.querySelector('#playersturn').style.display = 'none';
@@ -112,17 +100,17 @@ const board = (() => {
   };
 
   return {
-    display_board, updateBoard, boardArray, winStatus, drawStatus,
+    displayBoard, updateBoard, boardArray, winStatus, drawStatus,
   };
 })();
 
 const myBoard = board;
-const onPress = (id) => {
+const onPress = (id) => {// eslint-disable-line no-unused-vars
   const index = parseInt(id[id.length - 1], 10);
   if (myBoard.boardArray[index] === '') {
     const playersTurn = newGame.turn();
     myBoard.updateBoard(index, playersTurn[1]);
-    myBoard.display_board();
+    myBoard.displayBoard();
     myBoard.drawStatus();
     myBoard.winStatus(playersTurn);
   } else {
@@ -130,6 +118,6 @@ const onPress = (id) => {
   }
 };
 
-function playAgain() {
+function playAgain() {// eslint-disable-line no-unused-vars
   window.location.reload();
 }
