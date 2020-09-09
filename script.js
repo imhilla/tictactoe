@@ -1,7 +1,7 @@
 let newGame;
 
 const playersFactory = () => {
-  let player = { firstPlayerName: "", secondPlayerName: "" };
+  let player = { firstPlayerName: "", secondPlayerName: "",firstPlayerSymbol: "X", secondPlayerSymbol: "O"  };
 
   player.firstPlayerName = document.getElementById("name1").value;
   player.secondPlayerName = document.getElementById("name2").value;
@@ -10,22 +10,20 @@ const playersFactory = () => {
     "playersturn"
   ).textContent = `${player.firstPlayerName}'s turn`;
 
-  let symbol = { firstPlayerSymbol: "X", secondPlayerSymbol: "O" };
   let playerTurn = 0;
-
   const turn = () => {
     if (playerTurn === 0) {
       playerTurn += 1;
       document.getElementById(
         "playersturn"
       ).textContent = `${player.secondPlayerName}'s turn`;
-      return [player.firstPlayerName, symbol.firstPlayerSymbol];
+      return [player.firstPlayerName, player.firstPlayerSymbol];
     }
     playerTurn -= 1;
     document.getElementById(
       "playersturn"
     ).textContent = `${player.firstPlayerName}'s turn`;
-    return [player.secondPlayerName, symbol.secondPlayerSymbol];
+    return [player.secondPlayerName, player.secondPlayerSymbol];
   };
   return { turn };
 };
