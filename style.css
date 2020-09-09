@@ -17,7 +17,6 @@
 .board {
   padding: 30px;
   border-radius: 20px;
-  /*display: grid;*/
   grid-template-columns: repeat(3, 100px);
   grid-gap: 10px;
   background-color: bisque;

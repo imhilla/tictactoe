@@ -90,7 +90,7 @@ const board = (() => {
   const drawStatus = () => {
     let count = 0;
     function checkString(boardArray) {
-      for (i = 0; i < boardArray.length; i++) {
+      for (let i = 0; i < boardArray.length; i += 1) {
         if (boardArray[i].length > 0) {
           count += 1;
           if (count === 9) {
@@ -118,7 +118,7 @@ const board = (() => {
 
 const myBoard = board;
 const onPress = (id) => {
-  const index = parseInt(id[id.length - 1]);
+  const index = parseInt(id[id.length - 1], 10);
   if (myBoard.boardArray[index] === '') {
     const playersTurn = newGame.turn();
     myBoard.updateBoard(index, playersTurn[1]);
@@ -130,6 +130,6 @@ const onPress = (id) => {
   }
 };
 
-function reload() {
-  location.reload();
+function playAgain() {
+  window.location.reload();
 }
