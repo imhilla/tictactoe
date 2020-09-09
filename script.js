@@ -1,41 +1,35 @@
 let newGame;
-
+ 
 const players = () => {
+  let player = {firstPlayerName:'', secondPlayerName:''};
   let playerValidate = true;
-  let firstPlayerName;
-  let secondPlayerName;
   while (playerValidate === true) {
-    firstPlayerName = prompt('Please Enter First Player Name?');// eslint-disable-line no-alert
-    secondPlayerName = prompt('Please Enter Second Player Name?');// eslint-disable-line no-alert
+    player.firstPlayerName = prompt('Please Enter First Player Name?');// eslint-disable-line no-alert
+    player.secondPlayerName = prompt('Please Enter Second Player Name?');// eslint-disable-line no-alert
     if (
-      firstPlayerName !== ''
-      && secondPlayerName !== ''
-      && firstPlayerName !== secondPlayerName
+      player.firstPlayerName !== ''
+      && player.secondPlayerName !== ''
+      && player.firstPlayerName !== player.secondPlayerName
     ) {
       playerValidate = false;
     } else {
       alert('Please enter a valid name');// eslint-disable-line no-alert
     }
   }
-  document.getElementById('playersturn').textContent = `${firstPlayerName}'s turn`;
-  const firstPlayerSymbol = 'X';
-  const secondPlayerSymbol = 'O';
+  document.getElementById('playersturn').textContent = `${player.firstPlayerName}'s turn`;
+  let symbol = {firstPlayerSymbol:'X', secondPlayerSymbol:'O'}
   let playerTurn = 0;
   const turn = () => {
     if (playerTurn === 0) {
       playerTurn += 1;
-      document.getElementById('playersturn').textContent = `${secondPlayerName}'s turn`;
-      return [firstPlayerName, firstPlayerSymbol];
+      document.getElementById('playersturn').textContent = `${player.secondPlayerName}'s turn`;
+      return [player.firstPlayerName, symbol.firstPlayerSymbol];
     }
     playerTurn -= 1;
-    document.getElementById('playersturn').textContent = `${firstPlayerName}'s turn`;
-    return [secondPlayerName, secondPlayerSymbol];
+    document.getElementById('playersturn').textContent = `${player.firstPlayerName}'s turn`;
+    return [player.secondPlayerName, symbol.secondPlayerSymbol];
   };
-  return {
-    firstPlayerName,
-    secondPlayerName,
-    turn,
-  };
+  return { turn };
 };
 
 document.getElementById('playgame').addEventListener('click', () => {
