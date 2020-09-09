@@ -105,7 +105,7 @@ const board = (() => {
 })();
 
 const myBoard = board;
-const onPress = (id) => {// eslint-disable-line no-unused-vars
+const onPress = (id) => { // eslint-disable-line no-unused-vars
   const index = parseInt(id[id.length - 1], 10);
   if (myBoard.boardArray[index] === '') {
     const playersTurn = newGame.turn();
@@ -118,6 +118,6 @@ const onPress = (id) => {// eslint-disable-line no-unused-vars
   }
 };
 
-function playAgain() {// eslint-disable-line no-unused-vars
+function playAgain() { // eslint-disable-line no-unused-vars
   window.location.reload();
 }
