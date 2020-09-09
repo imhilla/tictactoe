@@ -1,18 +1,12 @@
 let newGame;
 
-document.getElementById('playgame').addEventListener('click', () => {
-  document.getElementById('outer-board').style.display = 'grid';
-  document.getElementById('playgame').style.display = 'none';
-  newGame = players();
-});
-
 const players = () => {
   let playerValidate = true;
   let firstPlayerName;
   let secondPlayerName;
   while (playerValidate === true) {
-    firstPlayerName = prompt('Please Enter First Player Name?');
-    secondPlayerName = prompt('Please Enter Second Player Name?');
+    firstPlayerName = prompt('Please Enter First Player Name?');// eslint-disable-line no-alert
+    secondPlayerName = prompt('Please Enter Second Player Name?');// eslint-disable-line no-alert
     if (
       firstPlayerName !== ''
       && secondPlayerName !== ''
@@ -20,7 +14,7 @@ const players = () => {
     ) {
       playerValidate = false;
     } else {
-      alert('Please enter a valid name');
+      alert('Please enter a valid name');// eslint-disable-line no-alert
     }
   }
   document.getElementById('playersturn').textContent = `${firstPlayerName}'s turn`;
@@ -43,6 +37,12 @@ const players = () => {
     turn,
   };
 };
+
+document.getElementById('playgame').addEventListener('click', () => {
+  document.getElementById('outer-board').style.display = 'grid';
+  document.getElementById('playgame').style.display = 'none';
+  newGame = players();
+});
 
 const board = (() => {
   const boardArray = ['', '', '', '', '', '', '', '', ''];
@@ -126,7 +126,7 @@ const onPress = (id) => {
     myBoard.drawStatus();
     myBoard.winStatus(playersTurn);
   } else {
-    alert('Already filled');
+    alert('Already filled');// eslint-disable-line no-alert
   }
 };
 
