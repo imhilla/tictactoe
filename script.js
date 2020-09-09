@@ -1,45 +1,42 @@
 let newGame;
- 
+
 const players = () => {
-  let player = {firstPlayerName:'', secondPlayerName:''};
-  let playerValidate = true;
-  while (playerValidate === true) {
-    player.firstPlayerName = prompt('Please Enter First Player Name?');// eslint-disable-line no-alert
-    player.secondPlayerName = prompt('Please Enter Second Player Name?');// eslint-disable-line no-alert
-    if (
-      player.firstPlayerName !== ''
-      && player.secondPlayerName !== ''
-      && player.firstPlayerName !== player.secondPlayerName
-    ) {
-      playerValidate = false;
-    } else {
-      alert('Please enter a valid name');// eslint-disable-line no-alert
-    }
-  }
-  document.getElementById('playersturn').textContent = `${player.firstPlayerName}'s turn`;
-  let symbol = {firstPlayerSymbol:'X', secondPlayerSymbol:'O'}
+  let player = { firstPlayerName: "", secondPlayerName: "" };
+
+  player.firstPlayerName = document.getElementById("name1").value;
+  player.secondPlayerName = document.getElementById("name2").value;
+
+  document.getElementById(
+    "playersturn"
+  ).textContent = `${player.firstPlayerName}'s turn`;
+  let symbol = { firstPlayerSymbol: "X", secondPlayerSymbol: "O" };
   let playerTurn = 0;
+
   const turn = () => {
     if (playerTurn === 0) {
       playerTurn += 1;
-      document.getElementById('playersturn').textContent = `${player.secondPlayerName}'s turn`;
+      document.getElementById(
+        "playersturn"
+      ).textContent = `${player.secondPlayerName}'s turn`;
       return [player.firstPlayerName, symbol.firstPlayerSymbol];
     }
     playerTurn -= 1;
-    document.getElementById('playersturn').textContent = `${player.firstPlayerName}'s turn`;
+    document.getElementById(
+      "playersturn"
+    ).textContent = `${player.firstPlayerName}'s turn`;
     return [player.secondPlayerName, symbol.secondPlayerSymbol];
   };
   return { turn };
 };
 
-document.getElementById('playgame').addEventListener('click', () => {
-  document.getElementById('outer-board').style.display = 'grid';
-  document.getElementById('playgame').style.display = 'none';
+document.getElementById("playgame").addEventListener("click", () => {
+  document.getElementById("outer-board").style.display = "grid";
+  document.getElementById("playgame").style.display = "none";
   newGame = players();
 });
 
 const board = (() => {
-  const boardArray = ['', '', '', '', '', '', '', '', ''];
+  const boardArray = ["", "", "", "", "", "", "", "", ""];
   const winArray = [
     [1, 2, 3],
     [4, 5, 6],
@@ -57,7 +54,7 @@ const board = (() => {
   };
 
   const updateBoard = (index, symbol) => {
-    if (boardArray[index] === '') {
+    if (boardArray[index] === "") {
       boardArray[index] = symbol;
     }
   };
@@ -70,11 +67,13 @@ const board = (() => {
         }
         if (count === 3) {
           setTimeout(() => {
-            document.querySelector('#outer-board').style.display = 'none';
-            document.querySelector('#playersturn').style.display = 'none';
-            document.querySelector('#winstatus').style.display = 'block';
-            document.getElementById('winstatus').textContent = `Congratulations ${moves[0]}! You Win `;
-            document.getElementById('reloadbutton').style.display = 'block';
+            document.querySelector("#outer-board").style.display = "none";
+            document.querySelector("#playersturn").style.display = "none";
+            document.querySelector("#winstatus").style.display = "block";
+            document.getElementById(
+              "winstatus"
+            ).textContent = `Congratulations ${moves[0]}! You Win `;
+            document.getElementById("reloadbutton").style.display = "block";
           }, 100);
         }
       });
@@ -82,36 +81,43 @@ const board = (() => {
   };
 
   const drawStatus = () => {
-    if (!boardArray.includes('')) {
+    if (!boardArray.includes("")) {
       setTimeout(() => {
-        document.querySelector('#outer-board').style.display = 'none';
-        document.querySelector('#playersturn').style.display = 'none';
-        document.querySelector('#winstatus').style.display = 'block';
-        document.querySelector('#winstatus').textContent = 'OHH NOO! Game Draw ';
-        document.getElementById('reloadbutton').style.display = 'block';
+        document.querySelector("#outer-board").style.display = "none";
+        document.querySelector("#playersturn").style.display = "none";
+        document.querySelector("#winstatus").style.display = "block";
+        document.querySelector("#winstatus").textContent =
+          "OHH NOO! Game Draw ";
+        document.getElementById("reloadbutton").style.display = "block";
       }, 100);
     }
   };
 
   return {
-    displayBoard, updateBoard, boardArray, winStatus, drawStatus,
+    displayBoard,
+    updateBoard,
+    boardArray,
+    winStatus,
+    drawStatus,
   };
 })();
 
 const myBoard = board;
-const onPress = (id) => { // eslint-disable-line no-unused-vars
+const onPress = (id) => {
+  // eslint-disable-line no-unused-vars
   const index = parseInt(id[id.length - 1], 10);
-  if (myBoard.boardArray[index] === '') {
+  if (myBoard.boardArray[index] === "") {
     const playersTurn = newGame.turn();
     myBoard.updateBoard(index, playersTurn[1]);
     myBoard.displayBoard();
     myBoard.drawStatus();
     myBoard.winStatus(playersTurn);
   } else {
-    alert('Already filled');// eslint-disable-line no-alert
+    alert("Already filled"); // eslint-disable-line no-alert
   }
 };
 
-function playAgain() { // eslint-disable-line no-unused-vars
+function playAgain() {
+  // eslint-disable-line no-unused-vars
   window.location.reload();
 }
