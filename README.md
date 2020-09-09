@@ -1,4 +1,4 @@
-# Library [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/MFahadUmer/Library)
+# TicTacToe [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/MFahadUmer/Library)
 
 [![License](https://img.shields.io/badge/License-MIT-green.svg)]()
 ![GitHub followers](https://img.shields.io/github/followers/imhilla?label=imhilla&style=social)
@@ -8,9 +8,9 @@
 ![GitHub followers](https://img.shields.io/github/followers/MFahadUmer?label=mfahadumer&style=social)
 ![Twitter URL](https://img.shields.io/twitter/follow/engfahadumer?label=Follow&style=social)
 
-> This is a Microverse Ruby on Rails Capstone Project
+> This is a Microverse JavaScript Project
 
-> Library!
+> Tic_Tac_Toe!
 
 ## Description
 
