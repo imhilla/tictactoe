@@ -1,6 +1,3 @@
-// document.querySelector("#inner-board-1").addEventListener("click",()=> {
-//   document.getElementById("para").style.display = "block"
-// })
 let newGame;
 
 document.getElementById("playgame").addEventListener("click", () => {
@@ -9,9 +6,7 @@ document.getElementById("playgame").addEventListener("click", () => {
   newGame = players();
 });
 
-function reload() {
-  location.reload();
-}
+
 const players = () => {
   let playerValidate = true;
   let firstPlayerName;
@@ -29,15 +24,18 @@ const players = () => {
       alert("Please enter a valid name");
     }
   }
+  document.getElementById("playersturn").textContent = `${firstPlayerName}'s turn`;
   const firstPlayerSymbol = "X";
   const secondPlayerSymbol = "O";
   let playerTurn = 0;
   const turn = () => {
     if (playerTurn == 0) {
       playerTurn += 1;
+      document.getElementById("playersturn").textContent = `${secondPlayerName}'s turn`;
       return [firstPlayerName, firstPlayerSymbol];
     } else {
       playerTurn -= 1;
+      document.getElementById("playersturn").textContent = `${firstPlayerName}'s turn`;
       return [secondPlayerName, secondPlayerSymbol];
     }
   };
@@ -65,25 +63,25 @@ const board = (() => {
       document.getElementById(`inner-board-${index}`).textContent = `${items}`;
     });
   };
+
   let updateBoard = (index, symbol) => {
     if (board_array[index] == "") {
       board_array[index] = symbol;
     }
   };
-  let win_status = (symbol) => {
+  let win_status = (moves) => {
     win_array.forEach(function (item) {
       let count = 0;
       item.forEach(function (char) {
-        if (board_array[char - 1] === symbol) {
+        if (board_array[char - 1] === moves[1]) {
           count += 1;
-          // console.log(`${count}, ${item} , ${symbol} `);
         }
         if (count == 3) {
           setTimeout(function () {
             document.querySelector("#outer-board").style.display = "none";
+            document.querySelector("#playersturn").style.display = "none";
             document.querySelector("#winstatus").style.display = "block";
-            document.getElementById("winstatus").textContent =
-              "Congratulations! You Win ";
+            document.getElementById("winstatus").textContent = `Congratulations ${moves[0]}! You Win `;
             document.getElementById("reloadbutton").style.display = "block";
           }, 100);
         }
@@ -92,7 +90,6 @@ const board = (() => {
   };
 
   let draw_status = () => {
-    win_status();
     let count = 0;
     function checkString(board_array) {
       for (i = 0; i < board_array.length; i++) {
@@ -108,6 +105,7 @@ const board = (() => {
     if (checkString(board_array) == true) {
       setTimeout(function () {
         document.querySelector("#outer-board").style.display = "none";
+        document.querySelector("#playersturn").style.display = "none";
         document.querySelector("#winstatus").style.display = "block";
         document.querySelector("#winstatus").textContent =
           "OHH NOO! Game Draw ";
@@ -115,6 +113,7 @@ const board = (() => {
       }, 100);
     }
   };
+
   return { display_board, updateBoard, board_array, win_status, draw_status };
 })();
 
@@ -126,12 +125,12 @@ const onPress = (id) => {
     myBoard.updateBoard(index, playersTurn[1]);
     myBoard.display_board();
     myBoard.draw_status();
-    myBoard.win_status(playersTurn[1]);
+    myBoard.win_status(playersTurn);
   } else {
     alert("Already filled");
   }
 };
-// let game = true;
-// while (game == true) {
-//
-// }
+
+function reload() {
+  location.reload();
+}
